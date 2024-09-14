@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  api-gateway:
+    image: api-gateway
+    container_name: api-gateway
+    ports:
+      - "9999:9999"
+    env_file:
+      - ./volume/config/.env
+    volumes:
+      - ./volume/certificate:/etc/ssl/certs
+    networks:
+      - app-network
+
+  order-service:
+    image: order-service
+    container_name: order-service
+    ports:
+      - "9001:9001"
+    env_file:
+      - ./volume/config/.env
+    volumes:
+      - ./volume/certificate:/etc/ssl/certs
+    networks:
+      - app-network
+
+  product-service:
+    image: product-service
+    container_name: product-service
+    ports:
+      - "9002:9002"
+    env_file:
+      - ./volume/config/.env
+    volumes:
+      - ./volume/certificate:/etc/ssl/certs
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

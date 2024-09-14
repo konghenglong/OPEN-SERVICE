@@ -1,0 +1,10 @@
+server:
+  port: 9001
+
+  ssl:
+    certificate: ${SSL.CERTIFICATE}
+    certificate-private-key: ${SSL.CERTIFICATE.PRIVATE.KEY}
+
+spring:
+  application:
+    name: order-service

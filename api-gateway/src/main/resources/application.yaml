@@ -1,0 +1,22 @@
+server:
+  port: 9999
+
+  ssl:
+    certificate: ${SSL.CERTIFICATE}
+    certificate-private-key: ${SSL.CERTIFICATE.PRIVATE.KEY}
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: order-service
+          uri: https://localhost.sbilhbank.com.kh:9001
+          predicates:
+            - Path=/order/**
+        - id: product-service
+          uri: https://localhost.sbilhbank.com.kh:9002
+          predicates:
+            - Path=/product/**
