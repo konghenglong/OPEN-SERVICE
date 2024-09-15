@@ -8,3 +8,8 @@ server:
 spring:
   application:
     name: order-service
+
+api:
+  product:
+    base-url: ${PRODUCT.BASE_URL}
+    get-product: ${PRODUCT.GET_PRODUCT}
